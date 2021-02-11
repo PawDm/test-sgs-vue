@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>test</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div id="app">
+      <label>Город</label>
+      <br />
+      <select v-model="selectedCity" @change="changeCity">
+             
+        <option v-for="(value,key) in cities" v-bind:value="key">
+          {{key}}
+        </option>
+            
+      </select>
+      <br />
+      <label>Цех</label>
+      <br />
+      <select v-model="selectedShop" @change="changeShop">
+                
+        <option v-for="(value,key) in cities[selectedCity]" v-bind:value="key">
+          {{key}}
+        </option>
+            
+      </select>
+      <br />
+
+      <label>Сотрудник</label>
+      <br />
+      <select v-model="selectedWorker">
+                
+        <option v-for="value in workers" v-bind:value="value">{{value}}</option>
+            
+      </select>
+      <br />
+      <label>Бригада</label>
+      <br />
+      <select v-model="selectedBrigades">
+                
+        <option v-for="value in brigades" v-bind:value="value">
+          {{value}}
+        </option>
+            
+      </select>
+
+      <br />
+      <label>Смена</label>
+      <br />
+      <template v-for="value in workShifts">
+        <input type="radio" v-bind:value="value" v-model="selectedWorkShifts" />
+        <label>{{value}}</label><br />
+      </template>
+
+      <button @click="sendCookie">Отправить в cookie</button>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
